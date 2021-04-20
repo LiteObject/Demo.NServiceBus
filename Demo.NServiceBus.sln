@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.NServiceBus.ShippingMa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.NServiceBus.ClientUI", "Demo.NServiceBus.ClientUI\Demo.NServiceBus.ClientUI.csproj", "{A395BB23-FCF7-4148-9624-4432582023E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.NServiceBus.BillingManagement", "Demo.NServiceBus.BillingManagement\Demo.NServiceBus.BillingManagement.csproj", "{5803FFB1-0236-4BC7-BF47-0FBB4580675D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A395BB23-FCF7-4148-9624-4432582023E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A395BB23-FCF7-4148-9624-4432582023E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A395BB23-FCF7-4148-9624-4432582023E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5803FFB1-0236-4BC7-BF47-0FBB4580675D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5803FFB1-0236-4BC7-BF47-0FBB4580675D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5803FFB1-0236-4BC7-BF47-0FBB4580675D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5803FFB1-0236-4BC7-BF47-0FBB4580675D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

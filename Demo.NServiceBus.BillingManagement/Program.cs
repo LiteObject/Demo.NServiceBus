@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Demo.NServiceBus.Message.Commands;
 using NServiceBus;
 
-namespace Demo.NServiceBus.OrderManagement
+namespace Demo.NServiceBus.BillingManagement
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static async System.Threading.Tasks.Task Main(string[] args)
         {
-            var appName = "OrderManagement";
+            var appName = "BillingManagement";
 
             Console.Title = appName;
 
