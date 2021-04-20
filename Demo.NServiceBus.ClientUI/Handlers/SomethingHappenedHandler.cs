@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Demo.NServiceBus.Message.Commands;
+﻿using System.Threading.Tasks;
 using Demo.NServiceBus.Message.Events;
 using NServiceBus;
 using NServiceBus.Logging;

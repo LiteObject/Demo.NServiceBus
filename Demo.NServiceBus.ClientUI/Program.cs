@@ -1,11 +1,11 @@
-﻿using Demo.NServiceBus.Message.Commands;
-using NServiceBus;
+﻿using NServiceBus;
 using NServiceBus.Logging;
 
-namespace Demo.NServiceBus.Saga
+namespace Demo.NServiceBus.ClientUI
 {
     using System;
     using System.Threading.Tasks;
+    using Message.Commands;
 
     /// <summary>
     /// Main Article: https://docs.particular.net/tutorials/nservicebus-step-by-step/1-getting-started/

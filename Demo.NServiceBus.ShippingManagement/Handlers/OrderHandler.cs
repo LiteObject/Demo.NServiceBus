@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Demo.NServiceBus.Message.Events;
 using NServiceBus;
 using NServiceBus.Logging;
