@@ -17,27 +17,35 @@ namespace Demo.NServiceBus.OrderManagement.Handlers
         {
             Log.Info($"Received {nameof(CreateOrder)}, OrderId = {message.OrderId}, created by {message.CreatedBy} on {message.CreatedOn}");
 
-            /*
-            var command = new ShipOrder
+            try
             {
-                OrderId = Guid.NewGuid().ToString(),
-                CreatedBy = "Mohammed",
-                CreatedOn = DateTime.Now
-            };
+                /*
+                   var command = new ShipOrder
+                   {
+                       OrderId = Guid.NewGuid().ToString(),
+                       CreatedBy = "Mohammed",
+                       CreatedOn = DateTime.Now
+                   };
+
+                   await context.Send(command).ConfigureAwait(false);*/
+
+                // Perform task(s) to create order and publish a "created" event.
+
+                var orderCreatedEvent = new OrderCreated
+                {
+                    OrderId = Guid.NewGuid().ToString(),
+                    CreatedBy = "Mohammed",
+                    CreatedOn = DateTime.Now
+                };
+
+                await context.Publish(orderCreatedEvent);
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message, e);
+                throw;
+            }
             
-            await context.Send(command).ConfigureAwait(false);*/
-
-            // Perform task(s) to create order and publish a "created" event.
-
-            var orderCreatedEvent = new OrderCreated
-            {
-                OrderId = Guid.NewGuid().ToString(),
-                CreatedBy = "Mohammed",
-                CreatedOn = DateTime.Now
-            };
-
-            await context.Publish(orderCreatedEvent);
-
             // return Task.CompletedTask;
         }
     }
