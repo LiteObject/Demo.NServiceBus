@@ -348,3 +348,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/.learningtransport/targetAuditQueue/.bodies
+/.learningtransport/targetAuditQueue
+/.learningtransport/.events/Demo.NServiceBus.Message.Events.OrderCreated

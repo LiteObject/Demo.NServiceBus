@@ -11,6 +11,8 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Demo.NServiceBus.Message\Demo.NServiceBus.Message.csproj" />
+		<ProjectReference Include="..\Demo.NServiceBus.Shared\Demo.NServiceBus.Shared.csproj" />
+		<ProjectReference Include="..\Demo.NServiceBus.ShippingManagement\Demo.NServiceBus.ShippingManagement.csproj" />
 	</ItemGroup>
 
 </Project>

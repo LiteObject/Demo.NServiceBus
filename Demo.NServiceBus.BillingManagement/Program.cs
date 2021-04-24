@@ -1,5 +1,7 @@
 ﻿using System;
-using Demo.NServiceBus.Message.Commands;
+using System.Diagnostics;
+using Demo.NServiceBus.Shared;
+using Demo.NServiceBus.ShippingManagement;
 using NServiceBus;
 
 namespace Demo.NServiceBus.BillingManagement
@@ -12,18 +14,12 @@ namespace Demo.NServiceBus.BillingManagement
 
             Console.Title = appName;
 
+            Activity.DefaultIdFormat = ActivityIdFormat.W3C;
+
             var endpointConfiguration = new EndpointConfiguration(appName);
 
-            var transport = endpointConfiguration.UseTransport<LearningTransport>();
+            endpointConfiguration.ConfigureCommonSettings(out _);
             
-            // Configure immediately retry for transient exceptions
-            var recoverability = endpointConfiguration.Recoverability();
-            recoverability.Immediate(immediateRetriesSettings =>
-            {
-                // Number of times Immediate Retries are performed. Default: 5.
-                immediateRetriesSettings.NumberOfRetries(3);
-            });
-
             var endpointInstance = await Endpoint.Start(endpointConfiguration).ConfigureAwait(false);
 
             Console.WriteLine("Press Enter to exit.");

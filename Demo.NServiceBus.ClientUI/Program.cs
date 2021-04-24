@@ -1,4 +1,6 @@
-﻿using NServiceBus;
+﻿using Demo.NServiceBus.Shared;
+using Demo.NServiceBus.ShippingManagement;
+using NServiceBus;
 using NServiceBus.Logging;
 
 namespace Demo.NServiceBus.ClientUI
@@ -23,13 +25,8 @@ namespace Demo.NServiceBus.ClientUI
 
             // The EndpointConfiguration class is where we define all the settings that determine how our endpoint will operate. 
             var endpointConfiguration = new EndpointConfiguration("ClientUI");
-
-            /*
-             * This setting defines the transport that NServiceBus will use to send and receive messages.
-             * We are using the Learning transport, which is bundled in the NServiceBus core library as a
-             * starter transport for learning how to use NServiceBus without additional dependencies.
-             */
-            var transport = endpointConfiguration.UseTransport<LearningTransport>();
+            
+            endpointConfiguration.ConfigureCommonSettings(out var transport);
 
             // Returns a RoutingSettings<LearningTransport>
             var routing = transport.Routing();

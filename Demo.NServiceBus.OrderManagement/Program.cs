@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Demo.NServiceBus.Message.Commands;
+using Demo.NServiceBus.Shared;
 using NServiceBus;
 
 namespace Demo.NServiceBus.OrderManagement
@@ -14,33 +15,12 @@ namespace Demo.NServiceBus.OrderManagement
             Console.Title = appName;
 
             var endpointConfiguration = new EndpointConfiguration(appName);
+            
+            endpointConfiguration.ConfigureCommonSettings(out var transport);
 
-            var transport = endpointConfiguration.UseTransport<LearningTransport>();
             var routing = transport.Routing();
             routing.RouteToEndpoint(typeof(ShipOrder), "ShippingManagement");
-
-            // Configure immediately retry for transient exceptions
-            var recoverability = endpointConfiguration.Recoverability();
-            recoverability.Immediate(immediateRetriesSettings =>
-            {
-                // Number of times Immediate Retries are performed. Default: 5.
-                immediateRetriesSettings.NumberOfRetries(3);
-
-                // TO disable retry:
-                // immediateRetriesSettings.NumberOfRetries(0);
-            });
-
-            // Configuring delayed retries for semi-transient exceptions
-            /* recoverability.Delayed(
-                delayed =>
-                {
-                    // delayed.NumberOfRetries(2);
-                    // delayed.TimeIncrease(TimeSpan.FromMinutes(5));
-
-                    // To disable:
-                    // delayed.NumberOfRetries(0);
-                }); */
-
+            
             var endpointInstance = await Endpoint.Start(endpointConfiguration).ConfigureAwait(false);
 
             Console.WriteLine("Press Enter to exit.");
