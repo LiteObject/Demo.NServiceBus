@@ -7,7 +7,7 @@ namespace Demo.NServiceBus.Shared
 {
     public static class Extensions
     {
-        public static void ConfigureCommonSettings(this EndpointConfiguration endpointConfiguration, out TransportExtensions<LearningTransport> transport)
+        public static void ConfigureCommonSettings(this EndpointConfiguration endpointConfiguration, out TransportExtensions<RabbitMQTransport> transport)
         {
             endpointConfiguration.EnableInstallers();
 
@@ -16,7 +16,11 @@ namespace Demo.NServiceBus.Shared
            * We are using the Learning transport, which is bundled in the NServiceBus core library as a
            * starter transport for learning how to use NServiceBus without additional dependencies.
            */
-            transport = endpointConfiguration.UseTransport<LearningTransport>();
+            // transport = endpointConfiguration.UseTransport<LearningTransport>();
+
+            transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
+            transport.UseConventionalRoutingTopology();
+            transport.ConnectionString("host=localhost;username=guest;password=guest");
 
             // Configure immediately retry for transient exceptions
             var recoverability = endpointConfiguration.Recoverability();
