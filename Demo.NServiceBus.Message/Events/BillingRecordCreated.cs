@@ -1,8 +1,9 @@
-﻿using System;
+﻿using NServiceBus;
+using System;
 
 namespace Demo.NServiceBus.Message.Events
 {
-    public class BillingRecordCreated
+    public class BillingRecordCreated : IEvent
     {
         public  string BillingRecordId { get; set; }
 

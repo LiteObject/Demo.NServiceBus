@@ -2,6 +2,7 @@
 using Npgsql;
 using NpgsqlTypes;
 using NServiceBus;
+using NServiceBus.Logging;
 
 namespace Demo.NServiceBus.Shared
 {
@@ -74,6 +75,13 @@ namespace Demo.NServiceBus.Shared
              * That can sometimes be troublesome in high message volume environments.
              ***************************************************************************************/
             endpointConfiguration.AuditProcessedMessagesTo("targetAuditQueue");
+        }
+
+        private static void ConfigureLogging() 
+        {
+            var defaultFactory = LogManager.Use<DefaultFactory>();
+            defaultFactory.Level(LogLevel.Debug);
+            // defaultFactory.Directory("pathToLoggingDirectory");
         }
     }
 }
