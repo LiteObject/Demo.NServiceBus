@@ -20,7 +20,7 @@ namespace Demo.NServiceBus.Shared
             // transport = endpointConfiguration.UseTransport<LearningTransport>();
 
             transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
-            transport.UseConventionalRoutingTopology();
+            transport.UseConventionalRoutingTopology(QueueType.Quorum);
             transport.ConnectionString("host=localhost;username=guest;password=guest");
 
             // Configure immediately retry for transient exceptions
